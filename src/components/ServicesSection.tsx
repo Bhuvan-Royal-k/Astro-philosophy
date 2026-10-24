@@ -74,44 +74,68 @@ export const ServicesSection: React.FC = () => {
           {filteredItems.map((service, index) => (
             <div
               key={service.id}
-              className="editorial-card p-6 sm:p-7 flex flex-col justify-between group rounded-[2px]"
+              className="editorial-card flex flex-col justify-between group rounded-[2px] overflow-hidden"
             >
               <div>
-                {/* Header row: Index & Subtitle */}
-                <div className="flex items-center justify-between pb-3 mb-3.5 border-b border-white/[0.06]">
-                  <span className="text-[11px] font-cinzel text-[#C6A15B]/70 tracking-[0.15em]">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span className="text-[9.5px] font-sans uppercase tracking-[0.2em] text-[#A9A5C5]/70">
-                    {service.subtitle}
-                  </span>
+                {/* Image Container with Consistent 16:10 Aspect Ratio */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#070913] border-b border-white/[0.06]">
+                  <img
+                    src={service.image}
+                    alt={service.imageAlt || service.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                    onError={(e) => {
+                      const img = e.currentTarget
+                      img.style.display = 'none'
+                    }}
+                  />
+                  {/* Subtle spiritual dark vignette overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0B1A]/85 via-transparent to-black/20 pointer-events-none" />
+
+                  {/* Numerical Index Badge */}
+                  <div className="absolute top-3 left-3 px-2 py-0.5 rounded-[1px] bg-[#04060F]/85 backdrop-blur-sm border border-[#C6A15B]/30 shadow-sm">
+                    <span className="text-[10px] font-cinzel text-[#DFC283] tracking-[0.16em]">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+
+                  {/* Subtitle pill */}
+                  <div className="absolute bottom-2.5 right-3 px-2 py-0.5 rounded-[1px] bg-[#04060F]/80 backdrop-blur-sm border border-white/10">
+                    <span className="text-[9px] font-sans uppercase tracking-[0.18em] text-[#A9A5C5]/90">
+                      {service.subtitle}
+                    </span>
+                  </div>
                 </div>
 
-                {/* Service Title */}
-                <h3 className="text-base sm:text-lg font-cinzel font-medium text-[#F4EFE4] group-hover:text-[#DFC283] transition-colors mb-2.5 leading-snug">
-                  {service.title}
-                </h3>
+                {/* Card Text Content */}
+                <div className="p-5 sm:p-6">
+                  {/* Service Title */}
+                  <h3 className="text-base sm:text-lg font-cinzel font-medium text-[#F4EFE4] group-hover:text-[#DFC283] transition-colors mb-2.5 leading-snug">
+                    {service.title}
+                  </h3>
 
-                {/* Description */}
-                <p className="text-xs sm:text-[13px] font-sans text-[#A9A5C5] leading-relaxed mb-4">
-                  {service.description}
-                </p>
+                  {/* Description */}
+                  <p className="text-xs sm:text-[13px] font-sans text-[#A9A5C5] leading-relaxed mb-4">
+                    {service.description}
+                  </p>
 
-                {/* Focus points / Highlights */}
-                {service.highlights && service.highlights.length > 0 && (
-                  <ul className="space-y-1.5 mb-6 text-[11.5px] font-sans text-[#F4EFE4]/70">
-                    {service.highlights.map((highlight, idx) => (
-                      <li key={idx} className="flex items-start space-x-2">
-                        <span className="text-[#C6A15B] text-[10px] leading-none mt-1">✦</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                  {/* Focus points / Highlights */}
+                  {service.highlights && service.highlights.length > 0 && (
+                    <ul className="space-y-1.5 mb-2 text-[11.5px] font-sans text-[#F4EFE4]/70">
+                      {service.highlights.map((highlight, idx) => (
+                        <li key={idx} className="flex items-start space-x-2">
+                          <span className="text-[#C6A15B] text-[10px] leading-none mt-1">✦</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </div>
 
               {/* Action Link: Direct WhatsApp Inquiry */}
-              <div className="pt-3.5 border-t border-white/[0.06]">
+              <div className="px-5 sm:px-6 pb-5 pt-3.5 border-t border-white/[0.06] mt-auto">
                 <a
                   href={getWhatsAppInquiryUrl(service)}
                   target="_blank"

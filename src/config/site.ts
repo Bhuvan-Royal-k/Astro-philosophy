@@ -20,6 +20,8 @@ export interface ServiceItem {
   category: 'readings' | 'renewal' | 'prayers'
   description: string
   highlights: string[]
+  image: string
+  imageAlt: string
 }
 
 export interface NavItem {
@@ -264,6 +266,8 @@ export const siteConfig: SiteConfig = {
         subtitle: "Traditional Divination",
         category: "readings",
         description: "An interpretive session using traditional cowrie shell patterns to encourage contemplative reflection and offer intuitive perspective on personal questions.",
+        image: "/assets/services/shell-reading.webp",
+        imageAlt: "Sacred cowrie shell divination on midnight-indigo silk with brass oil lamp",
         highlights: [
           "Classical symbolic interpretation",
           "Reflective inquiry into life crossroads",
@@ -276,6 +280,8 @@ export const siteConfig: SiteConfig = {
         subtitle: "Relationship Reflection",
         category: "readings",
         description: "A thoughtful exploration of interpersonal dynamics, emotional patterns, and shared perspectives to help bring clarity to relationship choices.",
+        image: "/assets/services/love-readings.webp",
+        imageAlt: "Twin antique brass peacock diya lamps with harmonizing golden flames and rose petals",
         highlights: [
           "Interpersonal communication patterns",
           "Clarity on emotional crossroads",
@@ -288,6 +294,8 @@ export const siteConfig: SiteConfig = {
         subtitle: "Symbolic Interpretation",
         category: "readings",
         description: "A structured card-based consultation using traditional archetypes to explore life themes, upcoming transitions, and creative options.",
+        image: "/assets/services/tarot-reading.webp",
+        imageAlt: "Archetypal tarot cards with antique gold foil borders and celestial constellations",
         highlights: [
           "Archetypal life imagery",
           "Perspective on personal dilemmas",
@@ -300,6 +308,8 @@ export const siteConfig: SiteConfig = {
         subtitle: "Hastarekha Observation",
         category: "readings",
         description: "An ancient practice of examining palm contours and line configurations to reflect upon personal temperament, aptitudes, and life phases.",
+        image: "/assets/services/palm-reading.webp",
+        imageAlt: "Hastarekha palm reading session showing hand lines and planetary mounts",
         highlights: [
           "Traditional line & mount observation",
           "Natural tendencies and aptitudes",
@@ -312,6 +322,8 @@ export const siteConfig: SiteConfig = {
         subtitle: "Physiognomic Insight",
         category: "readings",
         description: "Traditional observational analysis of facial features and expressions, offering respectful insights into personal disposition and natural tendencies.",
+        image: "/assets/services/face-reading.webp",
+        imageAlt: "Sacred South Indian copper alloy sculpture face showing facial contours",
         highlights: [
           "Classical facial contour principles",
           "Temperament & disposition reflection",
@@ -324,6 +336,8 @@ export const siteConfig: SiteConfig = {
         subtitle: "Intuitive Consultation",
         category: "readings",
         description: "An intuitive consultation focused on emotional currents and present circumstances to assist your personal discernment and decision-making.",
+        image: "/assets/services/psychic-readings.webp",
+        imageAlt: "Classical Indian Ajna brow chakra illustration representing spiritual vision and intuition",
         highlights: [
           "Attuned intuitive perception",
           "Exploration of present emotional focus",
@@ -336,6 +350,8 @@ export const siteConfig: SiteConfig = {
         subtitle: "Inner Alignment",
         category: "readings",
         description: "A quiet, reflective session centered on spiritual grounding, core values, and finding clarity during seasons of change or questioning.",
+        image: "/assets/services/spiritual-reading.webp",
+        imageAlt: "Ancient South Indian palm-leaf manuscript Tala-patra with sacred Vedic verses",
         highlights: [
           "Inner compass contemplation",
           "Mindful personal grounding",
@@ -348,6 +364,8 @@ export const siteConfig: SiteConfig = {
         subtitle: "Cleansing & Renewal",
         category: "renewal",
         description: "Traditional calming practices, meditative intentions, and mindful customs aimed at emotional unburdening and fostering personal peace.",
+        image: "/assets/services/bad-vibes-removal.webp",
+        imageAlt: "Traditional brass Aarti Thali with ceremonial flame and floral offerings",
         highlights: [
           "Traditional meditative techniques",
           "Fostering inner tranquility",
@@ -360,6 +378,8 @@ export const siteConfig: SiteConfig = {
         subtitle: "Mindful Harmonizing",
         category: "renewal",
         description: "Reflective spiritual approaches and space-harmonizing rituals designed to cultivate a serene environment and encourage positive focus.",
+        image: "/assets/services/get-rid-of-negativity.webp",
+        imageAlt: "Laksham Deepam illumination radiating thousands of sacred temple oil lamps",
         highlights: [
           "Space & mindset harmonizing",
           "Encouraging calm daily clarity",
@@ -372,6 +392,8 @@ export const siteConfig: SiteConfig = {
         subtitle: "Devotional Strength",
         category: "prayers",
         description: "Traditional devotional chanting and prayer offerings honoring Lord Hanuman, intended to inspire inner fortitude, resilience, and calm courage.",
+        image: "/assets/services/hanuman-prayers.webp",
+        imageAlt: "11th-century Chola dynasty bronze sculpture of Lord Hanuman in devotional stance",
         highlights: [
           "Classical stotra recitation",
           "Encouraging moral strength & resolve",
@@ -384,6 +406,8 @@ export const siteConfig: SiteConfig = {
         subtitle: "Transformative Grace",
         category: "prayers",
         description: "Sacred classical hymns dedicated to the transformative grace of the Divine Mother, seeking spiritual grounding during challenging periods.",
+        image: "/assets/services/kali-prayers.webp",
+        imageAlt: "10th-century Chola bronze sculpture of Divine Mother Kali in Chennai Museum",
         highlights: [
           "Ancient protective verses",
           "Spiritual grounding and courage",
@@ -396,6 +420,8 @@ export const siteConfig: SiteConfig = {
         subtitle: "Stillness & Transcendence",
         category: "prayers",
         description: "Meditative Vedic chanting and contemplation dedicated to Lord Shiva, creating a peaceful space for emotional poise and quiet reflection.",
+        image: "/assets/services/shiva-prayers.webp",
+        imageAlt: "Consecrated sacred Shiva Lingam adorned with vermilion and floral puja offerings",
         highlights: [
           "Peace-bestowing traditional mantras",
           "Cultivating stillness & serenity",
@@ -408,6 +434,8 @@ export const siteConfig: SiteConfig = {
         subtitle: "Traditional Sacred Rituals",
         category: "prayers",
         description: "Classical ceremonial prayers and time-honored spiritual rituals performed with mindful reverence to invoke balance, protection, and harmony.",
+        image: "/assets/services/special-indrajaal-prayers.webp",
+        imageAlt: "19th-century bronze Maha Meru Shri Yantra sacred ritual mandala",
         highlights: [
           "Traditional ceremonial prayer practice",
           "Time-honored restorative chants",
