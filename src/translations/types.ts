@@ -65,7 +65,10 @@ export interface TranslationDictionary {
     experienceSubtext: string
     poojasLabel: string
     poojasSubtext: string
-    devPlaceholderNotice?: string
+    clientsLabel: string
+    clientsSubtext: string
+    offeringsLabel: string
+    offeringsSubtext: string
   }
   services: {
     badge: string

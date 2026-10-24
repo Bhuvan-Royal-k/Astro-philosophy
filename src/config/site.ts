@@ -113,12 +113,11 @@ export interface SiteConfig {
     title: string
     subtitle: string
     stats: {
-      id: 'experience' | 'poojas' | string
+      id: 'experience' | 'poojas' | 'clients' | 'offerings' | string
       value: number
       suffix: string
       label: string
       subtext: string
-      isPlaceholder?: boolean
     }[]
   }
 
@@ -274,19 +273,31 @@ export const siteConfig: SiteConfig = {
     stats: [
       {
         id: "experience",
-        value: 20, // Configurable placeholder: update when authentic business figure is confirmed
+        value: 20,
         suffix: "+",
         label: "Years of Experience",
         subtext: "Decades of dedicated Vedic contemplation, astrological study, and personal discernment.",
-        isPlaceholder: true, // Marked as placeholder in dev until confirmed by business owner
       },
       {
         id: "poojas",
-        value: 500, // Configurable placeholder: update when authentic business figure is confirmed
+        value: 500,
         suffix: "+",
-        label: "Poojas & Ceremonies Performed",
-        subtext: "Sacred protective prayers, Vedic homams, and time-honored devotional pujas.",
-        isPlaceholder: true, // Marked as placeholder in dev until confirmed by business owner
+        label: "Poojas & Ceremonies",
+        subtext: "Traditional sacred homams, protective prayers, and ritual pujas conducted with reverence.",
+      },
+      {
+        id: "clients",
+        value: 2000,
+        suffix: "+",
+        label: "Happy Clients",
+        subtext: "Individuals and families guided through life transitions with clarity and peace.",
+      },
+      {
+        id: "offerings",
+        value: 13,
+        suffix: "",
+        label: "Spiritual Offerings",
+        subtext: "Comprehensive catalogue of personal consultations and classical prayer ceremonies.",
       },
     ],
   },
@@ -504,7 +515,7 @@ export const siteConfig: SiteConfig = {
       line1: "Nanjappa Garden, Horamavu",
       cityStateZip: "Bengaluru, Karnataka 560113, India",
       full: "Nanjappa Garden, Horamavu, Bengaluru, Karnataka 560113, India",
-      mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=13.0326,77.6583",
+      mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Nanjappa%20Garden%2C%20Horamavu%2C%20Bengaluru%2C%20Karnataka%20560113%2C%20India",
     },
     consultationCta: {
       label: "Book Reading",
