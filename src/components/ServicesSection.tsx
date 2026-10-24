@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { siteConfig, ServiceItem } from '../config/site'
 import { ArrowUpRight, MessageSquare } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
 
 export const ServicesSection: React.FC = () => {
-  const { services, contact } = siteConfig
+  const { contact, services } = siteConfig
+  const { t } = useLanguage()
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
 
   const filteredItems = selectedCategory === 'all'
@@ -11,9 +13,17 @@ export const ServicesSection: React.FC = () => {
     : services.items.filter((item) => item.category === selectedCategory)
 
   const getWhatsAppInquiryUrl = (service: ServiceItem) => {
+    const tr = t.services.items[service.id]
     const rawNumber = contact.phone?.replace(/[^0-9]/g, '') || '919108901714'
-    const message = `Hello Astro Philosophy, I would like to enquire about ${service.title}. Please share the details.`
+    const message = tr?.whatsAppMessage || `Hello Astro Philosophy, I would like to enquire about ${service.title}. Please share the details.`
     return `https://wa.me/${rawNumber}?text=${encodeURIComponent(message)}`
+  }
+
+  const categoryLabels: Record<string, string> = {
+    all: t.services.categories.all,
+    readings: t.services.categories.readings,
+    renewal: t.services.categories.renewal,
+    prayers: t.services.categories.prayers,
   }
 
   return (
@@ -29,20 +39,34 @@ export const ServicesSection: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          
+          {/* Sacred Astro Philosophy Gold Meditation Emblem (Positioned centered above Eyebrow) */}
+          <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3.5 flex items-center justify-center">
+            <img
+              src="/assets/images/astro-philosophy-logo.png"
+              alt="Astro Philosophy Sacred Golden Emblem"
+              className="w-full h-full object-contain filter drop-shadow-[0_0_10px_rgba(198,161,91,0.45)] transition-transform duration-300 hover:scale-105"
+              onError={(e) => {
+                e.currentTarget.src = '/assets/images/favicon.svg'
+              }}
+            />
+          </div>
+
+          {/* Eyebrow Label with Hairlines */}
           <div className="inline-flex items-center space-x-3 mb-3">
             <div className="w-4 h-[1px] bg-[#C6A15B]/40" />
             <span className="text-[10px] sm:text-[11px] font-sans font-medium tracking-[0.3em] uppercase text-[#C6A15B]/85">
-              {services.badge}
+              {t.services.badge}
             </span>
             <div className="w-4 h-[1px] bg-[#C6A15B]/40" />
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-cinzel font-medium tracking-wide text-[#F4EFE4] mb-4">
-            {services.title}
+            {t.services.title}
           </h2>
 
           <p className="text-sm sm:text-base font-serif-body italic text-[#A9A5C5] leading-relaxed max-w-2xl mx-auto">
-            {services.subtitle}
+            {t.services.subtitle}
           </p>
         </div>
 
@@ -51,6 +75,7 @@ export const ServicesSection: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-10 sm:mb-14">
             {services.categories.map((cat) => {
               const isActive = selectedCategory === cat.id
+              const label = categoryLabels[cat.id] || cat.label
               return (
                 <button
                   key={cat.id}
@@ -62,7 +87,7 @@ export const ServicesSection: React.FC = () => {
                       : 'bg-[#0F0E20]/60 border border-white/[0.08] text-[#A9A5C5] hover:text-[#F4EFE4] hover:border-[#C6A15B]/40'
                   }`}
                 >
-                  {cat.label}
+                  {label}
                 </button>
               )
             })}
@@ -71,90 +96,98 @@ export const ServicesSection: React.FC = () => {
 
         {/* Responsive Grid Layout (1 col mobile, 2 col tablet, 3 col desktop) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 mb-16">
-          {filteredItems.map((service, index) => (
-            <div
-              key={service.id}
-              className="editorial-card flex flex-col justify-between group rounded-[2px] overflow-hidden"
-            >
-              <div>
-                {/* Image Container with Consistent 16:10 Aspect Ratio */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#070913] border-b border-white/[0.06]">
-                  <img
-                    src={service.image}
-                    alt={service.imageAlt || service.title}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                    onError={(e) => {
-                      const img = e.currentTarget
-                      img.style.display = 'none'
-                    }}
-                  />
-                  {/* Subtle spiritual dark vignette overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0B1A]/85 via-transparent to-black/20 pointer-events-none" />
+          {filteredItems.map((service, index) => {
+            const tr = t.services.items[service.id]
+            const title = tr?.title || service.title
+            const subtitle = tr?.subtitle || service.subtitle
+            const description = tr?.description || service.description
+            const highlights = tr?.highlights || service.highlights
 
-                  {/* Numerical Index Badge */}
-                  <div className="absolute top-3 left-3 px-2 py-0.5 rounded-[1px] bg-[#04060F]/85 backdrop-blur-sm border border-[#C6A15B]/30 shadow-sm">
-                    <span className="text-[10px] font-cinzel text-[#DFC283] tracking-[0.16em]">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
+            return (
+              <div
+                key={service.id}
+                className="editorial-card flex flex-col justify-between group rounded-[2px] overflow-hidden"
+              >
+                <div>
+                  {/* Image Container with Consistent 16:10 Aspect Ratio */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#070913] border-b border-white/[0.06]">
+                    <img
+                      src={service.image}
+                      alt={service.imageAlt || title}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                      onError={(e) => {
+                        const img = e.currentTarget
+                        img.style.display = 'none'
+                      }}
+                    />
+                    {/* Subtle spiritual dark vignette overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0B1A]/85 via-transparent to-black/20 pointer-events-none" />
+
+                    {/* Numerical Index Badge */}
+                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded-[1px] bg-[#04060F]/85 backdrop-blur-sm border border-[#C6A15B]/30 shadow-sm">
+                      <span className="text-[10px] font-cinzel text-[#DFC283] tracking-[0.16em]">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+
+                    {/* Subtitle pill */}
+                    <div className="absolute bottom-2.5 right-3 px-2 py-0.5 rounded-[1px] bg-[#04060F]/80 backdrop-blur-sm border border-white/10">
+                      <span className="text-[9px] font-sans uppercase tracking-[0.18em] text-[#A9A5C5]/90">
+                        {subtitle}
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Subtitle pill */}
-                  <div className="absolute bottom-2.5 right-3 px-2 py-0.5 rounded-[1px] bg-[#04060F]/80 backdrop-blur-sm border border-white/10">
-                    <span className="text-[9px] font-sans uppercase tracking-[0.18em] text-[#A9A5C5]/90">
-                      {service.subtitle}
-                    </span>
+                  {/* Card Text Content */}
+                  <div className="p-5 sm:p-6">
+                    {/* Service Title */}
+                    <h3 className="text-base sm:text-lg font-cinzel font-medium text-[#F4EFE4] group-hover:text-[#DFC283] transition-colors mb-2.5 leading-snug">
+                      {title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-xs sm:text-[13px] font-sans text-[#A9A5C5] leading-relaxed mb-4">
+                      {description}
+                    </p>
+
+                    {/* Focus points / Highlights */}
+                    {highlights && highlights.length > 0 && (
+                      <ul className="space-y-1.5 mb-2 text-[11.5px] font-sans text-[#F4EFE4]/70">
+                        {highlights.map((highlight, idx) => (
+                          <li key={idx} className="flex items-start space-x-2">
+                            <span className="text-[#C6A15B] text-[10px] leading-none mt-1">✦</span>
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </div>
 
-                {/* Card Text Content */}
-                <div className="p-5 sm:p-6">
-                  {/* Service Title */}
-                  <h3 className="text-base sm:text-lg font-cinzel font-medium text-[#F4EFE4] group-hover:text-[#DFC283] transition-colors mb-2.5 leading-snug">
-                    {service.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-xs sm:text-[13px] font-sans text-[#A9A5C5] leading-relaxed mb-4">
-                    {service.description}
-                  </p>
-
-                  {/* Focus points / Highlights */}
-                  {service.highlights && service.highlights.length > 0 && (
-                    <ul className="space-y-1.5 mb-2 text-[11.5px] font-sans text-[#F4EFE4]/70">
-                      {service.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-start space-x-2">
-                          <span className="text-[#C6A15B] text-[10px] leading-none mt-1">✦</span>
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                {/* Action Link: Direct WhatsApp Inquiry */}
+                <div className="px-5 sm:px-6 pb-5 pt-3.5 border-t border-white/[0.06] mt-auto">
+                  <a
+                    href={getWhatsAppInquiryUrl(service)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-1.5 text-[10.5px] font-sans font-medium tracking-[0.18em] uppercase text-[#DFC283] hover:text-[#F4EFE4] transition-colors"
+                  >
+                    <MessageSquare className="w-3.5 h-3.5 text-[#C6A15B]/80" />
+                    <span>{t.services.inquireWhatsApp}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </a>
                 </div>
               </div>
-
-              {/* Action Link: Direct WhatsApp Inquiry */}
-              <div className="px-5 sm:px-6 pb-5 pt-3.5 border-t border-white/[0.06] mt-auto">
-                <a
-                  href={getWhatsAppInquiryUrl(service)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-1.5 text-[10.5px] font-sans font-medium tracking-[0.18em] uppercase text-[#DFC283] hover:text-[#F4EFE4] transition-colors"
-                >
-                  <MessageSquare className="w-3.5 h-3.5 text-[#C6A15B]/80" />
-                  <span>Inquire via WhatsApp</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Quiet Editorial Methodology Note */}
         <div className="py-6 border-t border-b border-white/[0.06] max-w-2xl mx-auto text-center px-4">
           <p className="text-xs sm:text-sm font-serif-body italic text-[#DFC283]/85 leading-relaxed">
-            All consultations and ceremonial prayers are traditional interpretive and contemplative practices offered for personal reflection. Sessions and private prayer services are scheduled by prior appointment.
+            {t.services.methodologyNote}
           </p>
         </div>
 

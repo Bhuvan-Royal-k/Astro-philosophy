@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { siteConfig } from '../config/site'
 import { gsap, ScrollTrigger } from '../lib/gsap'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import { useLanguage } from '../context/LanguageContext'
 
 type FrameConfig = typeof siteConfig.hero.frames
 type MobileFrameConfig = NonNullable<typeof siteConfig.hero.frames.mobile>
@@ -18,6 +19,7 @@ export const CinematicHero: React.FC = () => {
   const scrollIndicatorRef = useRef<HTMLDivElement>(null)
 
   const prefersReducedMotion = useReducedMotion()
+  const { t } = useLanguage()
 
   const desktopConfig = siteConfig.hero.frames
   const mobileConfig = siteConfig.hero.frames.mobile
@@ -959,19 +961,19 @@ export const CinematicHero: React.FC = () => {
           <div className="inline-flex items-center space-x-2.5 mb-2 sm:mb-3">
             <div className="w-4 sm:w-6 h-[1px] bg-[#F4EFE4]/35" />
             <span className="text-[10px] sm:text-xs font-sans font-medium tracking-[0.32em] uppercase text-[#F4EFE4] drop-shadow-[0_1px_6px_rgba(4,6,15,0.95)]">
-              {siteConfig.hero.overlay.eyebrow}
+              {t.hero.eyebrow}
             </span>
             <div className="w-4 sm:w-6 h-[1px] bg-[#F4EFE4]/35" />
           </div>
 
           {/* Primary Cinematic Heading: Warm ivory #FFF8EB with responsive clamp and layered shadow */}
           <h1 className="text-[clamp(1.6rem,3.2vw,2.8rem)] font-cinzel font-medium tracking-[0.18em] text-[#FFF8EB] mb-2.5 sm:mb-3.5 leading-tight drop-shadow-[0_2px_12px_rgba(4,6,15,0.95)] drop-shadow-[0_0_22px_rgba(4,6,15,0.7)]">
-            {siteConfig.hero.overlay.title}
+            {t.hero.title}
           </h1>
 
           {/* Concise Supporting Line: Brighter ivory #F4EFE4 for crisp readability */}
           <p className="max-w-md text-xs sm:text-sm md:text-base font-serif-body italic tracking-wide text-[#F4EFE4]/95 leading-relaxed drop-shadow-[0_1px_8px_rgba(4,6,15,0.95)] px-3">
-            {siteConfig.hero.overlay.tagline}
+            {t.hero.tagline}
           </p>
         </div>
 
@@ -982,7 +984,7 @@ export const CinematicHero: React.FC = () => {
         >
           <div className="inline-flex flex-col items-center space-y-1.5">
             <span className="text-[10.5px] sm:text-xs font-cinzel tracking-[0.25em] uppercase text-[#FFF8EB] drop-shadow-[0_2px_10px_rgba(4,6,15,0.95)]">
-              {siteConfig.hero.overlay.arrivalMilestone}
+              {t.hero.arrivalMilestone}
             </span>
             <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#C6A15B]/60 to-transparent" />
           </div>
@@ -994,7 +996,7 @@ export const CinematicHero: React.FC = () => {
           className="absolute z-20 bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1.5 pointer-events-none transition-opacity duration-300"
         >
           <span className="text-[8.5px] sm:text-[9px] font-sans tracking-[0.3em] uppercase text-[#F4EFE4]/75 font-medium drop-shadow-[0_1px_4px_rgba(4,6,15,0.9)]">
-            {siteConfig.hero.overlay.scrollHint}
+            {t.hero.scrollHint}
           </span>
           <div className="w-[1px] h-6 sm:h-7 bg-gradient-to-b from-[#C6A15B]/70 via-[#C6A15B]/30 to-transparent" />
         </div>

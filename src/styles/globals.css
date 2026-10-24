@@ -27,7 +27,7 @@
 html {
   background-color: var(--color-midnight-navy);
   color: var(--color-warm-ivory);
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans Kannada', 'Noto Sans Telugu', 'Noto Sans Malayalam', 'Nirmala UI', system-ui, -apple-system, sans-serif;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -70,13 +70,13 @@ body {
 
 /* Typography Headings */
 h1, h2, h3, h4, .font-cinzel {
-  font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
-  letter-spacing: 0.08em;
+  font-family: 'Cinzel', 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans Kannada', 'Noto Sans Telugu', 'Noto Sans Malayalam', 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: 0.06em;
   font-weight: 500;
 }
 
 .font-serif-body {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Cormorant Garamond', 'Noto Sans Devanagari', 'Noto Sans Tamil', 'Noto Sans Kannada', 'Noto Sans Telugu', 'Noto Sans Malayalam', Georgia, serif;
   font-weight: 400;
 }
 

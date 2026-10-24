@@ -1,9 +1,10 @@
 import React from 'react'
-import { siteConfig } from '../config/site'
 import { Quote } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
 
 export const AboutSection: React.FC = () => {
-  const { about } = siteConfig
+  const { t } = useLanguage()
+  const { about } = t
 
   const romanNumerals = ['I', 'II', 'III', 'IV', 'V']
 
@@ -105,4 +106,5 @@ export const AboutSection: React.FC = () => {
     </section>
   )
 }
+
 export default AboutSection

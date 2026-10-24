@@ -462,7 +462,7 @@ export const siteConfig: SiteConfig = {
       line1: "Nanjappa Garden, Horamavu",
       cityStateZip: "Bengaluru, Karnataka 560113, India",
       full: "Nanjappa Garden, Horamavu, Bengaluru, Karnataka 560113, India",
-      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Nanjappa+Garden,+Horamavu,+Bengaluru,+Karnataka+560113,+India",
+      mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=13.0326,77.6583",
     },
     consultationCta: {
       label: "Book Reading",
