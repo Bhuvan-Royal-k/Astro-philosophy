@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <radialGradient id="favBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#17152F" />
+      <stop offset="100%" stop-color="#080B1A" />
+    </radialGradient>
+    <linearGradient id="favGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DFC283" />
+      <stop offset="50%" stop-color="#C6A15B" />
+      <stop offset="100%" stop-color="#8E7036" />
+    </linearGradient>
+  </defs>
+  <!-- Background Disc -->
+  <circle cx="24" cy="24" r="23" fill="url(#favBg)" stroke="url(#favGold)" stroke-width="1.5" />
+  
+  <!-- Outer Celestial Ring with 12 cardinal ticks -->
+  <circle cx="24" cy="24" r="19" stroke="#C6A15B" stroke-width="0.75" stroke-dasharray="1.5 3" opacity="0.7" />
+  <circle cx="24" cy="24" r="14.5" stroke="#DFC283" stroke-width="0.75" opacity="0.4" />
+
+  <!-- Sacred 8-Pointed Star / Dravidian Temple Pinnacle -->
+  <path d="M 24 6 L 26.5 18 L 38 20.5 L 28 26 L 31 38 L 24 30.5 L 17 38 L 20 26 L 10 20.5 L 21.5 18 Z" 
+        fill="url(#favGold)" fill-opacity="0.25" stroke="url(#favGold)" stroke-width="1.2" stroke-linejoin="round" />
+        
+  <!-- Temple Gopuram Kalasam (Sacred Spire) Silhouette inside -->
+  <path d="M 24 13 L 26 19 L 28 20 L 27 24 L 29 25 L 28 29 L 20 29 L 19 25 L 21 24 L 20 20 L 22 19 Z" 
+        fill="none" stroke="#F4EFE4" stroke-width="1.1" stroke-linejoin="round" />
+  <circle cx="24" cy="11.5" r="1.5" fill="#DFC283" />
+  <circle cx="24" cy="24" r="2" fill="#F4EFE4" />
+</svg>

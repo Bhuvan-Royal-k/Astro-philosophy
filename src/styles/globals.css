@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Core Color Tokens */
+  --color-midnight-navy: #080B1A;
+  --color-cosmic-indigo: #17152F;
+  --color-antique-gold: #C6A15B;
+  --color-antique-gold-light: #DFC283;
+  --color-antique-gold-dark: #8E7036;
+  --color-warm-ivory: #F4EFE4;
+  --color-warm-ivory-muted: #DED8CC;
+  --color-muted-lavender: #A9A5C5;
+  
+  /* Semantic Editorial Tokens */
+  --bg-primary: var(--color-midnight-navy);
+  --bg-secondary: var(--color-cosmic-indigo);
+  --text-primary: var(--color-warm-ivory);
+  --text-muted: var(--color-muted-lavender);
+  --accent-gold: var(--color-antique-gold);
+  --border-subtle: rgba(198, 161, 91, 0.15);
+  --border-delicate: rgba(244, 239, 228, 0.08);
+}
+
+/* Base Body Styles */
+html {
+  background-color: var(--color-midnight-navy);
+  color: var(--color-warm-ivory);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-midnight-navy);
+  color: var(--color-warm-ivory);
+  overflow-x: hidden;
+  min-height: 100vh;
+  min-height: 100svh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Refined Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080B1A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(198, 161, 91, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(198, 161, 91, 0.5);
+}
+
+/* Editorial Selection */
+::selection {
+  background-color: #C6A15B;
+  color: #080B1A;
+}
+
+/* Typography Headings */
+h1, h2, h3, h4, .font-cinzel {
+  font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.font-serif-body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+}
+
+/* Quiet Luxury Glass & Border System */
+.editorial-panel {
+  background: rgba(12, 16, 38, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(198, 161, 91, 0.14);
+}
+
+.editorial-card {
+  background: rgba(15, 14, 32, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(244, 239, 228, 0.08);
+  transition: border-color 0.4s ease, background-color 0.4s ease, transform 0.4s ease;
+}
+
+.editorial-card:hover {
+  border-color: rgba(198, 161, 91, 0.35);
+  background: rgba(23, 21, 47, 0.55);
+}
+
+/* Hairline dividers */
+.hairline-b {
+  border-bottom: 1px solid rgba(244, 239, 228, 0.08);
+}
+
+.hairline-t {
+  border-top: 1px solid rgba(244, 239, 228, 0.08);
+}
+
+.gold-hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(198, 161, 91, 0.35) 50%, transparent 100%);
+}
+
+/* Editorial subtle gold accent */
+.text-gold-subtle {
+  color: #DFC283;
+}
+
+/* Accessibility: Focus visible styling */
+:focus-visible {
+  outline: 1px solid var(--color-antique-gold);
+  outline-offset: 3px;
+}
+
+/* Reduced Motion Overrides */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

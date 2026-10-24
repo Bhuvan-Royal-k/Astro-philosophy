@@ -1,0 +1,40 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies and build output
+node_modules
+dist
+dist-ssr
+*.local
+
+# Environment files, secrets & credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+*.crt
+
+# Editor directories and OS files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Raw uncompressed video files (optional local media)
+/public/assets/video/*.mp4
+/public/assets/video/*.mov
+/public/assets/video/*.webm
+!/public/assets/video/README.md
