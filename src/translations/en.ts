@@ -45,6 +45,16 @@ export const en: TranslationDictionary = {
       source: "Astro Philosophy Contemplation"
     }
   },
+  journey: {
+    badge: "OUR JOURNEY",
+    title: "A Tradition of Faith & Guidance",
+    subtitle: "A quiet, devoted lineage of classical Vedic contemplation, providing thoughtful spiritual counsel and authentic devotional ceremonies.",
+    experienceLabel: "Years of Experience",
+    experienceSubtext: "Decades of dedicated Vedic contemplation, astrological study, and personal discernment.",
+    poojasLabel: "Poojas & Ceremonies Performed",
+    poojasSubtext: "Sacred protective prayers, Vedic homams, and time-honored devotional pujas.",
+    devPlaceholderNotice: "Placeholder — to be updated with confirmed business figures",
+  },
   services: {
     badge: "SERVICES & CEREMONIES",
     title: "Consultations & Spiritual Offerings",

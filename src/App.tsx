@@ -5,6 +5,7 @@ import { ScrollProgress } from './components/ScrollProgress'
 import { Navbar } from './components/Navbar'
 import { CinematicHero } from './components/CinematicHero'
 import { AboutSection } from './components/AboutSection'
+import { JourneySection } from './components/JourneySection'
 import { ServicesSection } from './components/ServicesSection'
 import { ContactSection } from './components/ContactSection'
 import { Footer } from './components/Footer'
@@ -34,6 +35,9 @@ export const App: React.FC = () => {
 
           {/* Section 2: About / Philosophy */}
           <AboutSection />
+
+          {/* Section: Our Journey / Statistics */}
+          <JourneySection />
 
           {/* Section 3: Services / Consultations */}
           <ServicesSection />

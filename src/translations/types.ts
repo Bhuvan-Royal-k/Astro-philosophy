@@ -57,6 +57,16 @@ export interface TranslationDictionary {
       source: string
     }
   }
+  journey: {
+    badge: string
+    title: string
+    subtitle: string
+    experienceLabel: string
+    experienceSubtext: string
+    poojasLabel: string
+    poojasSubtext: string
+    devPlaceholderNotice?: string
+  }
   services: {
     badge: string
     title: string

@@ -105,6 +105,24 @@ export interface SiteConfig {
   }
 
   /**
+   * Section: Our Journey / Experience & Pooja Statistics
+   * Configurable statistics: update values with verified figures when available.
+   */
+  journey: {
+    badge: string
+    title: string
+    subtitle: string
+    stats: {
+      id: 'experience' | 'poojas' | string
+      value: number
+      suffix: string
+      label: string
+      subtext: string
+      isPlaceholder?: boolean
+    }[]
+  }
+
+  /**
    * Section 3: Services Section
    */
   services: {
@@ -247,6 +265,30 @@ export const siteConfig: SiteConfig = {
       text: "Astrology at its best is not a rigid decree; it is a thoughtful mirror held up to the seasons and choices of life.",
       source: "Astro Philosophy Contemplation"
     }
+  },
+
+  journey: {
+    badge: "OUR JOURNEY",
+    title: "A Tradition of Faith & Guidance",
+    subtitle: "A lineage of classical Vedic contemplation, providing thoughtful spiritual counsel and time-honored devotional ceremonies.",
+    stats: [
+      {
+        id: "experience",
+        value: 20, // Configurable placeholder: update when authentic business figure is confirmed
+        suffix: "+",
+        label: "Years of Experience",
+        subtext: "Decades of dedicated Vedic contemplation, astrological study, and personal discernment.",
+        isPlaceholder: true, // Marked as placeholder in dev until confirmed by business owner
+      },
+      {
+        id: "poojas",
+        value: 500, // Configurable placeholder: update when authentic business figure is confirmed
+        suffix: "+",
+        label: "Poojas & Ceremonies Performed",
+        subtext: "Sacred protective prayers, Vedic homams, and time-honored devotional pujas.",
+        isPlaceholder: true, // Marked as placeholder in dev until confirmed by business owner
+      },
+    ],
   },
 
   services: {
